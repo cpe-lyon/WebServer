@@ -1,0 +1,63 @@
+[
+  {
+    "path": "/incendie",
+    "controller": "Incendie",
+    "action": "getAllIncendies",
+    "method": "GET",
+    "param": []
+  },
+  {
+    "path": "/logout",
+    "controller": "Login",
+    "action": "logout",
+    "method": "GET",
+    "param": []
+  },
+  {
+    "path": "/login",
+    "controller": "Login",
+    "action": "home",
+    "method": "GET",
+    "param": []
+  },
+  {
+    "path": "/register",
+    "controller": "Login",
+    "action": "home",
+    "method": "GET",
+    "param": []
+  },
+  {
+    "path": "/register",
+    "controller": "Login",
+    "action": "register",
+    "method": "POST",
+    "param": [
+      "username",
+      "password"
+    ]
+  },
+  {
+    "path": "/",
+    "controller": "Home",
+    "action": "home",
+    "method": "GET",
+    "param": []
+  },
+  {
+    "path": "/login",
+    "controller": "Login",
+    "action": "login",
+    "method": "POST",
+    "param": []
+  },
+  {
+    "path": "/getAllSymptomesByPathoId",
+    "controller": "Home",
+    "action": "getAllSymptomesByPathoId",
+    "method": "POST",
+    "param": [
+      "idPatho"
+    ]
+  }
+]

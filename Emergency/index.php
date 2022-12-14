@@ -6,10 +6,11 @@
 // $params = explode('/', htmlspecialchars(rtrim($_GET['action'], '/')));
 
 // > TESTING
-require('./model/Incendie.php');
-$incendie = new Incendie;
-$listeIncendie = $incendie->getAllIncendies();
+require('./model/Repositories/IncendieRepository.php');
+$incendieRepository = new IncendieRepository;
+$listeIncendie = $incendieRepository->getAllIncendies();
 echo json_encode($listeIncendie);
+require('view/carte.php');
 // < TESTING
 
 
@@ -119,5 +120,5 @@ echo json_encode($listeIncendie);
 //     }
 //     exit();
 // } else {
-//     carte();
+//      carte();
 // }
