@@ -1,0 +1,16 @@
+[
+  {
+    "path": "/incendie",
+    "controller": "Incendie",
+    "action": "getAllIncendies",
+    "method": "GET",
+    "param": []
+  },
+  {
+    "path": "/",
+    "controller": "Carte",
+    "action": "carte",
+    "method": "GET",
+    "param": []
+  }
+]

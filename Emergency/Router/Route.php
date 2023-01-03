@@ -45,8 +45,8 @@ class Route
 	{
 		$controller = null;
 		$controllerName = $this->controller . "Controller";
+		require_once __DIR__ . "/../Controller/" . $controllerName . ".php";
 		if (class_exists($controllerName)) {
-
 			$controller = new $controllerName($httpRequest, $config);
 			if (method_exists($controller, $this->action)) {
 				$controller->{$this->action}(...$httpRequest->getParam());
@@ -54,7 +54,7 @@ class Route
 				throw new Exception("Method " . $this->action . " not found in controller " . $controllerName);
 			}
 		} else {
-			throw new Exception("Controller " . $controllerName . " not found");
+			throw new Exception("Controller " . $controllerName . " not found.");
 		}
 	}
 }

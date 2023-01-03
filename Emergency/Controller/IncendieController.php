@@ -1,9 +1,6 @@
 <?php
-// use Model\Repository\PathologyRepository;
-// use Service\PathologyService;
-
-require_once "BaseController.php";
-require_once "./model/IncendieRepository.php";
+require_once('BaseController.php');
+require_once('./Model/IncendieRepository.php');
 
 class IncendieController extends BaseController
 {
@@ -11,6 +8,7 @@ class IncendieController extends BaseController
     {
         $incendieRepository = new IncendieRepository();
         $listeIncendie = $incendieRepository->getAllIncendies();
-        return $listeIncendie;
+        // var_dump($listeIncendie);
+        print json_encode($listeIncendie);
     }
 }

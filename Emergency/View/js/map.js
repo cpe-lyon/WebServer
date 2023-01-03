@@ -1,19 +1,19 @@
-function requeteApi(element, methode) {
-    //let requestURL = 'http://127.0.0.1/~/ProjetScientifique/WebServer/Emergency/controller'+element;
-    let request = new XMLHttpRequest();
-    request.open(methode, requestURL);
-    request.responseType = 'json';
-    return request;
-}
+// function requeteApi(element, methode) {
+//     let requestURL = 'http://127.0.0.1/~/ProjetScientifique/WebServer/Emergency/Controller/' + element + 'Controller';
+//     let request = new XMLHttpRequest();
+//     request.open(methode, requestURL);
+//     request.responseType = 'json';
+//     return request;
+// }
+var listeIncendies;
 
 function getIncendies() {
     $.ajax({
-        type: "get",
+        type: "GET",
         url: '/incendie',
         success: function (data) {
-            console.log(data)
-            alert(data);
-            data = JSON.parse(data);
+            console.log(data);
+            listeIncendies = JSON.parse(data);
         }
     });
 }
@@ -26,14 +26,7 @@ function afficheMap(map) {
         }
     });
 
-    //45.796002, 4.763202  <=>  45.796002, 4.975719
-    //45.796002, 4.975719  <=>  45.715516, 4.975719
-    var bounds = [[45.715516, 4.975719], [45.816106, 4.726810]];
-    L.rectangle(bounds, { color: "#ff7800", weight: 1 }).addTo(map);
-    map.fitBounds(bounds);
-
     //Création des icones
-    getAllCamions
     var camionIcon = L.icon({
         iconUrl: '/view/img/camion.png',
         shadowUrl: '',
@@ -76,8 +69,16 @@ function afficheMap(map) {
 
     var layerGroup = L.layerGroup();
 
-    getIncendies();
-    //Appel API
+    window.onload = (event) => {
+        getIncendies();
+        for (let i in listeIncendies) {
+            marker = new L.marker([listeIncendies[i].inc_longitude, listeIncendies[i].inc_latitude], { icon: feuIcon })
+                .bindPopup("Incendie : " + listeIncendies[i].id_incendie + "<br>Intensité : " + listeIncendies[i].inc_intensite +
+                    "<br>Coordonnée : " + "(" + listeIncendies[i].inc_longitude + " ; " + listeIncendies[i].inc_latitude + ")")
+            layerGroup.addLayer(marker);
+        }
+        layerGroup.addTo(map);
+    };
 
     // var listeCamions;
     // var listeCapteurs;

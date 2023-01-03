@@ -1,5 +1,5 @@
 <?php
-include 'config/config.php';
+include 'Config/config.php';
 abstract class DatabaseConnexion
 {
     protected PDO $_connexion;

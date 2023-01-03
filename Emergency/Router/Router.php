@@ -6,7 +6,7 @@ class Router
 
     public function __construct()
     {
-        $stringRoute = file_get_contents('./config/routes.json');
+        $stringRoute = file_get_contents('./Config/routes.json');
         $this->listRoute = json_decode($stringRoute);
     }
 
