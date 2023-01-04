@@ -1,7 +1,5 @@
 let layerGroup = L.layerGroup();
-let listeIncendies;
-let listeCasernes;
-let listeCamions;
+let listeIncendies, listeCasernes, listeCamions, listeCapteurs;
 
 function getIncendies() {
     $.ajax({
@@ -36,40 +34,51 @@ function getCamions() {
     });
 }
 
+function getCapteurs() {
+    $.ajax({
+        type: "GET",
+        url: '/capteur',
+        async: false,
+        success: function (data) {
+            listeCapteurs = JSON.parse(data);
+        }
+    });
+}
+
 function afficheMap(map) {
     //Load icons
     let camionIcon = L.icon({
         iconUrl: '/View/img/camion.png',
         shadowUrl: '',
-        iconSize: [40, 40], // size of the icon
-        shadowSize: [50, 64], // size of the shadow
-        iconAnchor: [20, 20], // point of the icon which will correspond to marker's location
-        shadowAnchor: [4, 62],  // the same for the shadow
-        popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+        iconSize: [40, 40],
+        shadowSize: [50, 64],
+        iconAnchor: [20, 20],
+        shadowAnchor: [4, 62],
+        popupAnchor: [-3, -76]
     });
-
-    // let capteurIcon = L.icon({
-    //     iconUrl: '/View/img/capteur.png',
-    //     shadowUrl: '',
-    //     iconSize: [40, 40], // size of the icon
-    //     shadowSize: [50, 64], // size of the shadow
-    //     iconAnchor: [20, 20], // point of the icon which will correspond to marker's location
-    //     shadowAnchor: [4, 62],  // the same for the shadow
-    //     popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
-    // });
 
     let IncendieIcon = L.icon({
         iconUrl: '/View/img/incendie.png',
         shadowUrl: '',
-        iconSize: [40, 40], // size of the icon
-        shadowSize: [50, 64], // size of the shadow
-        iconAnchor: [20, 20], // point of the icon which will correspond to marker's location
-        shadowAnchor: [4, 62],  // the same for the shadow
-        popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+        iconSize: [40, 40],
+        shadowSize: [50, 64],
+        iconAnchor: [20, 20],
+        shadowAnchor: [4, 62],
+        popupAnchor: [-3, -76]
     });
 
     let caserneIcon = L.icon({
         iconUrl: '/View/img/caserne.png',
+        shadowUrl: '',
+        iconSize: [40, 40],
+        shadowSize: [50, 64],
+        iconAnchor: [20, 20],
+        shadowAnchor: [4, 62],
+        popupAnchor: [-3, -76]
+    });
+
+    let capteurIcon = L.icon({
+        iconUrl: '/View/img/capteur.png',
         shadowUrl: '',
         iconSize: [40, 40],
         shadowSize: [50, 64],
@@ -108,6 +117,16 @@ function afficheMap(map) {
                 .bindPopup("Identifiant : " + listeCamions[i].id_camion + "<br>Caserne : " + listeCamions[i].cam_id_caserne + (
                 listeCamions[i].cam_id_incendie ? "<br>Incendie : " + listeCamions[i].cam_id_incendie : "" ) + 
                     "<br>Coordonnées : " + "(" + listeCamions[i].cam_latitude + " ; " + listeCamions[i].cam_longitude + ")")
+            layerGroup.addLayer(marker);
+        }
+        layerGroup.addTo(map);
+
+        //Get and add all capteurs to the map
+        getCapteurs();
+        for (let i in listeCapteurs) {
+            marker = new L.marker([listeCapteurs[i].cam_latitude, listeCapteurs[i].cam_longitude], { icon: capteurIcon })
+                .bindPopup("Identifiant : " + listeCapteurs[i].id_capteur +
+                    "<br>Coordonnées : " + "(" + listeCapteurs[i].cap_latitude + " ; " + listeCapteurs[i].cap_longitude + ")")
             layerGroup.addLayer(marker);
         }
         layerGroup.addTo(map);

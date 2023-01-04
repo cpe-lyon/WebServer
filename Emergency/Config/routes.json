@@ -26,5 +26,12 @@
     "action": "getAllCamions",
     "method": "GET",
     "param": []
+  },
+  {
+    "path": "/capteur",
+    "controller": "Capteur",
+    "action": "getAllCapteurs",
+    "method": "GET",
+    "param": []
   }
 ]
