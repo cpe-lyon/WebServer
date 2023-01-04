@@ -95,7 +95,7 @@ function afficheMap(map) {
         getCasernes();
         for (let i in listeCasernes) {
             marker = new L.marker([listeCasernes[i].cas_longitude, listeCasernes[i].cas_latitude], { icon: caserneIcon })
-                .bindPopup("Identifiant : " + listeCasernes[i].id_caserne +
+                .bindPopup("    Identifiant : " + listeCasernes[i].id_caserne +
                     "<br>Coordonnées : " + "(" + listeCasernes[i].cas_longitude + " ; " + listeCasernes[i].cas_latitude + ")")
             layerGroup.addLayer(marker);
         }
@@ -105,7 +105,8 @@ function afficheMap(map) {
         getCamions();
         for (let i in listeCamions) {
             marker = new L.marker([listeCamions[i].cam_latitude, listeCamions[i].cam_longitude], { icon: camionIcon })
-                .bindPopup("Identifiant : " + listeCamions[i].id_camion +
+                .bindPopup("Identifiant : " + listeCamions[i].id_camion + "<br>Caserne : " + listeCamions[i].cam_id_caserne + (
+                listeCamions[i].cam_id_incendie ? "<br>Incendie : " + listeCamions[i].cam_id_incendie : "" ) + 
                     "<br>Coordonnées : " + "(" + listeCamions[i].cam_latitude + " ; " + listeCamions[i].cam_longitude + ")")
             layerGroup.addLayer(marker);
         }
