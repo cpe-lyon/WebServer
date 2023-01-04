@@ -1,6 +1,6 @@
 {
 	"autoloadFolder": [
-		"controller",
-		"model"
+		"Controller",
+		"Model"
 	]
 }
