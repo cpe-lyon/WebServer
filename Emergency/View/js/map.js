@@ -121,7 +121,7 @@ function afficheMap(map) {
         //Get and add all capteurs to the map
         getCapteurs();
         for (let i in listeCapteurs) {
-            marker = new L.marker([listeCapteurs[i].cam_latitude, listeCapteurs[i].cam_longitude], { icon: capteurIcon })
+            marker = new L.marker([listeCapteurs[i].cap_latitude, listeCapteurs[i].cap_longitude], { icon: capteurIcon })
                 .bindPopup("Identifiant : " + listeCapteurs[i].id_capteur +
                     "<br>Coordonnées : " + "(" + listeCapteurs[i].cap_latitude + " ; " + listeCapteurs[i].cap_longitude + ")")
             layerGroup.addLayer(marker);
