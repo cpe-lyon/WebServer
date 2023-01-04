@@ -10,7 +10,7 @@ class CamionRepository extends DatabaseConnexion
 
     function getAllCamions()
     {
-        $sql = "SELECT * FROM public.camion";
+        $sql = 'SELECT * FROM public."T_Camion"';
         $query = $this->_connexion->prepare($sql);
         $query->execute();
         $resultat = $query->fetchAll(PDO::FETCH_CLASS);
@@ -19,13 +19,21 @@ class CamionRepository extends DatabaseConnexion
 
     function getCamionById($id)
     {
-        $sql = " SELECT * FROM public.camion WHERE id_camion = $id ";
+        $sql = 'SELECT * FROM public."T_Camion" WHERE id_camion = :id';
         $query = $this->_connexion->prepare($sql);
         $query->execute();
         $resultat = $query->fetchAll(PDO::FETCH_CLASS);
         return $resultat;
     }
 
+    function deleteCamionById($id)
+    {
+        $sql = 'DELETE FROM public."T_Camion" WHERE id_camion = :id';
+        $query = $this->_connexion->prepare($sql);
+        $query->bindParam(':id', $id);
+        $query->execute();
+    }
+    
     // function putAllCamions($data){
     //     $data = json_decode($data, true);
     //     foreach($data as $key => $val){
@@ -39,20 +47,13 @@ class CamionRepository extends DatabaseConnexion
     //     }
     // }
 
-    function deleteCamionById($id)
-    {
-        $sql = "DELETE FROM public.camion WHERE id_camion = {$id}";
-        $query = $this->_connexion->prepare($sql);
-        $query->execute();
-    }
-
-    function deleteCamions($data)
-    {
-        $data = json_decode($data, true);
-        foreach ($data as $key => $val) {
-            $sql = "DELETE FROM public.camion WHERE id_camion = {$data[$key]['id_camion']}";
-            $query = $this->_connexion->prepare($sql);
-            $query->execute();
-        }
-    }
+    // function deleteCamions($data)
+    // {
+    //     $data = json_decode($data, true);
+    //     foreach ($data as $key => $val) {
+    //         $sql = "DELETE FROM public.camion WHERE id_camion = {$data[$key]['id_camion']}";
+    //         $query = $this->_connexion->prepare($sql);
+    //         $query->execute();
+    //     }
+    // }
 }

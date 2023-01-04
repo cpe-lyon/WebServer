@@ -1,5 +1,12 @@
 [
   {
+    "path": "/",
+    "controller": "Carte",
+    "action": "carte",
+    "method": "GET",
+    "param": []
+  },
+  {
     "path": "/incendie",
     "controller": "Incendie",
     "action": "getAllIncendies",
@@ -7,9 +14,16 @@
     "param": []
   },
   {
-    "path": "/",
-    "controller": "Carte",
-    "action": "carte",
+    "path": "/caserne",
+    "controller": "Caserne",
+    "action": "getAllCasernes",
+    "method": "GET",
+    "param": []
+  },
+  {
+    "path": "/camion",
+    "controller": "Camion",
+    "action": "getAllCamions",
     "method": "GET",
     "param": []
   }

@@ -1,34 +1,26 @@
 {% extends "base.html.twig" %}
-{% block title %}Carte{% endblock %}
-{% block head %}
-    {{ parent() }}
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css" media="print">
-{% endblock %}
 {% block content %}
 <div id="corps">
-    <legend>Légende :</legend>
     <div class="icones">
         <img src="View/img/capteur.png">Capteur
-        <img src="View/img/feu.png">Feu
+        <img src="View/img/incendie.png">Feu
         <img src="View/img/camion.png">Camion
         <img src="View/img/caserne.png">Caserne
     </div>
     <div id="map"></div>
 </div>
 
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin="">
-</script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="View/js/map.js"></script>
 <script>
-    var map = L.map('map').setView([45.76, 4.83], 13);
+    var map = L.map('map').setView([45.77, 4.84], 12.3);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
-    // setInterval(() => {
-        afficheMap(map);
-    // }, 5000);
+    afficheMap(map);
 </script>
 
 {% endblock %}

@@ -8,7 +8,6 @@ class IncendieController extends BaseController
     {
         $incendieRepository = new IncendieRepository();
         $listeIncendie = $incendieRepository->getAllIncendies();
-        // var_dump($listeIncendie);
         print json_encode($listeIncendie);
     }
 }
