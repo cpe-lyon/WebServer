@@ -98,7 +98,6 @@ function afficheMap(map) {
                 layerGroup.addLayer(marker);
             }
         }
-        layerGroup.addTo(map);
 
         //Get and add all casernes to the map
         getCasernes();
@@ -108,7 +107,6 @@ function afficheMap(map) {
                     "<br>Coordonnées : " + "(" + listeCasernes[i].cas_longitude + " ; " + listeCasernes[i].cas_latitude + ")")
             layerGroup.addLayer(marker);
         }
-        layerGroup.addTo(map);
 
         //Get and add all camions to the map
         getCamions();
@@ -119,7 +117,6 @@ function afficheMap(map) {
                     "<br>Coordonnées : " + "(" + listeCamions[i].cam_latitude + " ; " + listeCamions[i].cam_longitude + ")")
             layerGroup.addLayer(marker);
         }
-        layerGroup.addTo(map);
 
         //Get and add all capteurs to the map
         getCapteurs();
