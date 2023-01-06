@@ -88,6 +88,10 @@ function afficheMap(map) {
     });
 
     function updateMap() {
+
+        //Remove icone
+        layerGroup.clearLayers();
+
         //Get and add all incendies to the map
         getIncendies();
         for (let i in listeIncendies) {
@@ -113,7 +117,7 @@ function afficheMap(map) {
         for (let i in listeCamions) {
             marker = new L.marker([listeCamions[i].cam_latitude, listeCamions[i].cam_longitude], { icon: camionIcon })
                 .bindPopup("Identifiant : " + listeCamions[i].id_camion + "<br>Caserne : " + listeCamions[i].cam_id_caserne + (
-                listeCamions[i].cam_id_incendie ? "<br>Incendie : " + listeCamions[i].cam_id_incendie : "" ) + 
+                    listeCamions[i].cam_id_incendie ? "<br>Incendie : " + listeCamions[i].cam_id_incendie : "") +
                     "<br>Coordonnées : " + "(" + listeCamions[i].cam_latitude + " ; " + listeCamions[i].cam_longitude + ")")
             layerGroup.addLayer(marker);
         }
