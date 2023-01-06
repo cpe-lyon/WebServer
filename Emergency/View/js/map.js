@@ -87,7 +87,7 @@ function afficheMap(map) {
         popupAnchor: [-3, -76]
     });
 
-    window.onload = (event) => {
+    function updateMap() {
         //Get and add all incendies to the map
         getIncendies();
         for (let i in listeIncendies) {
@@ -127,5 +127,10 @@ function afficheMap(map) {
             layerGroup.addLayer(marker);
         }
         layerGroup.addTo(map);
+    }
+
+    window.onload = (event) => {
+        updateMap();
+        setInterval(updateMap, 3000);
     };
 }
