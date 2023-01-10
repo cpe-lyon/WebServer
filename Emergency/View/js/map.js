@@ -96,7 +96,17 @@ function afficheMap(map) {
         getIncendies();
         for (let i in listeIncendies) {
             if (listeIncendies[i].inc_intensite > 0) {
-                marker = new L.marker([listeIncendies[i].inc_latitude, listeIncendies[i].inc_longitude], { icon: IncendieIcon })
+                marker = new L.marker([listeIncendies[i].inc_latitude, listeIncendies[i].inc_longitude], {
+                    icon: L.icon({
+                        iconUrl: '/View/img/incendie.png',
+                        shadowUrl: '',
+                        iconSize: [listeIncendies[i].inc_intensite * 10, listeIncendies[i].inc_intensite * 10],
+                        shadowSize: [50, 64],
+                        iconAnchor: [20, 20],
+                        shadowAnchor: [4, 62],
+                        popupAnchor: [-3, -76]
+                    })
+                })
                     .bindPopup("Identifiant : " + listeIncendies[i].id_incendie + "<br>Intensité : " + listeIncendies[i].inc_intensite +
                         "<br>Coordonnées : " + "(" + listeIncendies[i].inc_latitude + " ; " + listeIncendies[i].inc_longitude + ")")
                 layerGroup.addLayer(marker);
@@ -106,7 +116,17 @@ function afficheMap(map) {
         //Get and add all casernes to the map
         getCasernes();
         for (let i in listeCasernes) {
-            marker = new L.marker([listeCasernes[i].cas_longitude, listeCasernes[i].cas_latitude], { icon: caserneIcon })
+            marker = new L.marker([listeCasernes[i].cas_longitude, listeCasernes[i].cas_latitude], {
+                icon: L.icon({
+                    iconUrl: '/View/img/caserne.png',
+                    shadowUrl: '',
+                    iconSize: [40, 40],
+                    shadowSize: [50, 64],
+                    iconAnchor: [20, 20],
+                    shadowAnchor: [4, 62],
+                    popupAnchor: [-3, -76]
+                })
+            })
                 .bindPopup("    Identifiant : " + listeCasernes[i].id_caserne +
                     "<br>Coordonnées : " + "(" + listeCasernes[i].cas_longitude + " ; " + listeCasernes[i].cas_latitude + ")")
             layerGroup.addLayer(marker);
@@ -115,7 +135,17 @@ function afficheMap(map) {
         //Get and add all camions to the map
         getCamions();
         for (let i in listeCamions) {
-            marker = new L.marker([listeCamions[i].cam_latitude, listeCamions[i].cam_longitude], { icon: camionIcon })
+            marker = new L.marker([listeCamions[i].cam_latitude, listeCamions[i].cam_longitude], {
+                icon: L.icon({
+                    iconUrl: '/View/img/camion.png',
+                    shadowUrl: '',
+                    iconSize: [40, 40],
+                    shadowSize: [50, 64],
+                    iconAnchor: [20, 20],
+                    shadowAnchor: [4, 62],
+                    popupAnchor: [-3, -76]
+                })
+            })
                 .bindPopup("Identifiant : " + listeCamions[i].id_camion + "<br>Caserne : " + listeCamions[i].cam_id_caserne + (
                     listeCamions[i].cam_id_incendie ? "<br>Incendie : " + listeCamions[i].cam_id_incendie : "") +
                     "<br>Coordonnées : " + "(" + listeCamions[i].cam_latitude + " ; " + listeCamions[i].cam_longitude + ")")
@@ -125,7 +155,17 @@ function afficheMap(map) {
         //Get and add all capteurs to the map
         getCapteurs();
         for (let i in listeCapteurs) {
-            marker = new L.marker([listeCapteurs[i].cap_latitude, listeCapteurs[i].cap_longitude], { icon: capteurIcon })
+            marker = new L.marker([listeCapteurs[i].cap_latitude, listeCapteurs[i].cap_longitude], {
+                icon: L.icon({
+                    iconUrl: '/View/img/capteur.png',
+                    shadowUrl: '',
+                    iconSize: [40, 40],
+                    shadowSize: [50, 64],
+                    iconAnchor: [20, 20],
+                    shadowAnchor: [4, 62],
+                    popupAnchor: [-3, -76]
+                })
+            })
                 .bindPopup("Identifiant : " + listeCapteurs[i].id_capteur +
                     "<br>Coordonnées : " + "(" + listeCapteurs[i].cap_latitude + " ; " + listeCapteurs[i].cap_longitude + ")")
             layerGroup.addLayer(marker);
