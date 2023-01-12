@@ -46,47 +46,6 @@ function getCapteurs() {
 }
 
 function afficheMap(map) {
-    //Load icons
-    let camionIcon = L.icon({
-        iconUrl: '/View/img/camion.png',
-        shadowUrl: '',
-        iconSize: [40, 40],
-        shadowSize: [50, 64],
-        iconAnchor: [20, 20],
-        shadowAnchor: [4, 62],
-        popupAnchor: [-3, -76]
-    });
-
-    let IncendieIcon = L.icon({
-        iconUrl: '/View/img/incendie.png',
-        shadowUrl: '',
-        iconSize: [40, 40],
-        shadowSize: [50, 64],
-        iconAnchor: [20, 20],
-        shadowAnchor: [4, 62],
-        popupAnchor: [-3, -76]
-    });
-
-    let caserneIcon = L.icon({
-        iconUrl: '/View/img/caserne.png',
-        shadowUrl: '',
-        iconSize: [40, 40],
-        shadowSize: [50, 64],
-        iconAnchor: [20, 20],
-        shadowAnchor: [4, 62],
-        popupAnchor: [-3, -76]
-    });
-
-    let capteurIcon = L.icon({
-        iconUrl: '/View/img/capteur.png',
-        shadowUrl: '',
-        iconSize: [40, 40],
-        shadowSize: [50, 64],
-        iconAnchor: [20, 20],
-        shadowAnchor: [4, 62],
-        popupAnchor: [-3, -76]
-    });
-
     function updateMap() {
 
         //Remove icone
