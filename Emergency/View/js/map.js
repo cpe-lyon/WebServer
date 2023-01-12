@@ -154,22 +154,22 @@ function afficheMap(map) {
 
         //Get and add all capteurs to the map
         getCapteurs();
-        for (let i in listeCapteurs) {
-            marker = new L.marker([listeCapteurs[i].cap_latitude, listeCapteurs[i].cap_longitude], {
-                icon: L.icon({
-                    iconUrl: '/View/img/capteur.png',
-                    shadowUrl: '',
-                    iconSize: [40, 40],
-                    shadowSize: [50, 64],
-                    iconAnchor: [20, 20],
-                    shadowAnchor: [4, 62],
-                    popupAnchor: [-3, -76]
-                })
-            })
-                .bindPopup("Identifiant : " + listeCapteurs[i].id_capteur +
-                    "<br>Coordonnées : " + "(" + listeCapteurs[i].cap_latitude + " ; " + listeCapteurs[i].cap_longitude + ")")
-            layerGroup.addLayer(marker);
-        }
+        // for (let i in listeCapteurs) {
+        //     marker = new L.marker([listeCapteurs[i].cap_latitude, listeCapteurs[i].cap_longitude], {
+        //         icon: L.icon({
+        //             iconUrl: '/View/img/capteur.png',
+        //             shadowUrl: '',
+        //             iconSize: [40, 40],
+        //             shadowSize: [50, 64],
+        //             iconAnchor: [20, 20],
+        //             shadowAnchor: [4, 62],
+        //             popupAnchor: [-3, -76]
+        //         })
+        //     })
+        //         .bindPopup("Identifiant : " + listeCapteurs[i].id_capteur +
+        //             "<br>Coordonnées : " + "(" + listeCapteurs[i].cap_latitude + " ; " + listeCapteurs[i].cap_longitude + ")")
+        //     layerGroup.addLayer(marker);
+        // }
         layerGroup.addTo(map);
     }
 
